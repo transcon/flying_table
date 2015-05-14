@@ -53,6 +53,7 @@ Author
 -------
 
 * Chris Moody
+* Ian Snyder
 
 License
 -------

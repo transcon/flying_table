@@ -6,7 +6,7 @@ require 'flying_table/version'
 Gem::Specification.new do |spec|
   spec.name          = "flying_table"
   spec.version       = FlyingTable::VERSION
-  spec.authors       = ["Chris Moody"]
+  spec.authors       = ["Chris Moody", "Ian Snyder"]
   spec.email         = ["cmoody@transcon.com"]
   spec.summary       = %q{Table and class maker primarily for testing}
   spec.homepage      = "https://github.com/transcon/flying_table"
