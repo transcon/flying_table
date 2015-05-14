@@ -1,0 +1,3 @@
+module FlyingTable
+  VERSION = "0.0.1"
+end
