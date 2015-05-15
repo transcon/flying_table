@@ -2,15 +2,20 @@ class FlyingTable::TableMaker
   def self.create(tables)  new(tables).setup    end
   def self.destroy(tables) new(tables).teardown end
   def initialize(tables)
-    @migration = ActiveRecord::Migration
+    @AR        = ActiveRecord
+    @base      = @AR::Base
+    @migration = @AR::Migration
     @tables    = tables
   end
+  def setup()             @base.transaction{@migration.suppress_messages{create_tables}}    end
+  def teardown()          @base.transaction{@migration.suppress_messages{drop_tables}}      end
+
+
+  private
   def create_columns(t,columns) columns.each{|name,type| t.send(type,name) }                end
   def create_tables()           @tables.each{|table| seperate_table(table)}                 end
   def drop_tables()             @tables.each{|name| drop_table(name.to_s)}                  end
   def seperate_table(table)     table.each{|name,columns| create_table(name.to_s, columns)} end
-  def setup()                   @migration.suppress_messages{create_tables}                 end
-  def teardown()                @migration.suppress_messages{drop_tables}                   end
 
   def create_table(name,columns)
     Object.const_set(name.classify, Class.new(ActiveRecord::Base))

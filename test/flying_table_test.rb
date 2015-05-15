@@ -12,17 +12,17 @@ class FuzzyRecordTest < TestCase
     assert_raises(NameError) {Example.new(name: 'John', created: Date.today)}
   end
   def test_creates_tables
-    FlyingTable.create(example: {name: :string}, example2: {created: :date})
-    example  = Example.new(name: 'John')
-    example2 = Example2.new(created: Date.today)
+    FlyingTable.create(table: {name: :string}, fable: {created: :date})
+    example  = Table.new(name: 'John')
+    example2 = Fable.new(created: Date.today)
     assert_equal true, example.save!
     assert_equal true, example2.save!
-    FlyingTable.destroy(:example,:example2)
+    FlyingTable.destroy(:table,:fable)
   end
   def test_destroys_tables
-    FlyingTable.create(example: {name: :string}, example2: {created: :date})
-    FlyingTable.destroy(:example, :example2)
-    assert_raises(NameError) {Example.new()}
-    assert_raises(NameError) {Example2.new()}
+    FlyingTable.create(elbat: {name: :string}, elbaf: {created: :date})
+    FlyingTable.destroy(:elbat, :elbaf)
+    assert_raises(NameError) {Elbat.new()}
+    assert_raises(NameError) {Elbaf.new()}
   end
 end
