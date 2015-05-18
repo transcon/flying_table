@@ -22,6 +22,22 @@ Or install it yourself as:
 
 ## Usage
 
+In your tests to create and destroy tables:
+```ruby
+    $ @tables = FlyingTable.create(example: {name: :string, created: :date})
+```
+And when complete:
+```ruby
+    $ @tables.teardown
+```
+
+To use with a block:
+```ruby
+    $ FlyingTable.with(example: {name: :string, created: :date}) do
+    $   # do stuff with Example
+    $ end
+```
+
 In your tests to create a table with class name Example fields name: :string and created: :date
 
 ```ruby
